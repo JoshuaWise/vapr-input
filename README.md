@@ -11,7 +11,7 @@ npm install --save vapr-input
 
 The `vapr-input` plugin is used to declare which *content-types* are acceptable for an incoming request's body. If someone makes a request with an unsupported content-type, they'll receive `415 Unsupported Media Type`.
 
-When a valid request is received, the correct parser function will be invoked with the raw body stream (a [River](https://github.com/JoshuaWise/vapr#modern-async-tooling)), and the result will become available at `req.body`.
+When a valid request is received, the corresponding parser function will be invoked with the raw body stream (a [River](https://github.com/JoshuaWise/vapr#modern-async-tooling)) as its argument, and the result will become available at `req.body`.
 
 ```js
 const app = require('vapr')();
