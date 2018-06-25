@@ -14,8 +14,8 @@ The `vapr-input` plugin is used to declare which *content-types* are acceptable 
 When a valid request is received, the corresponding parser function will be invoked with the raw body stream (a [River](https://github.com/JoshuaWise/vapr#modern-async-tooling)) as its argument, and the result will become available at `req.body`.
 
 ```js
-const app = require('vapr')();
 const input = require('vapr-input');
+const app = require('vapr')();
 const route = app.get('/foo');
 
 route.use(input({
