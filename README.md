@@ -48,8 +48,6 @@ You can optionally pass a `default` function, which is used when no other media 
 
 ```js
 route.use(input({
-  'application/json': raw => ...,
-  'application/xml': raw => ...,
   'text/plain': raw => ...,
   'default': raw => ...,
 }));
