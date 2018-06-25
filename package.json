@@ -1,7 +1,7 @@
 {
   "name": "vapr-input",
   "version": "0.5.0",
-  "description": "A vapr plugin for handling requests based on content-type",
+  "description": "A vapr plugin for handling requests based on Content-Type",
   "main": "lib/index.js",
   "dependencies": {
     "content-type": "^1.0.4"

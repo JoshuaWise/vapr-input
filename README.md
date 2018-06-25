@@ -9,7 +9,7 @@ npm install --save vapr-input
 
 ## Usage
 
-The `vapr-input` plugin is used to declare which *content-types* are acceptable for an incoming request's body. If someone makes a request with an unsupported content-type, they'll receive `415 Unsupported Media Type`.
+The `vapr-input` plugin is used to declare which media types are acceptable for an incoming request's body. If someone makes a request with an unsupported media type, they'll receive `415 Unsupported Media Type`.
 
 When a valid request is received, the corresponding parser function will be invoked with the raw body stream (a [River](https://github.com/JoshuaWise/vapr#modern-async-tooling)) as its argument, and the result will become available at `req.body`.
 
@@ -30,7 +30,7 @@ route.use((req) => {
 
 ## Options
 
-Each parser function also takes a second argument, which is an object describing the parameters found within the content-type header. For the sake of simplicity and security, if someone makes a request with any charset parameter besides `utf-8` or `us-ascii`, they'll receive `415 Unsupported Media Type`. This behavior can be suppressed by passing the `anyCharset` option to the plugin.
+Each parser function also takes a second argument, which is an object describing the parameters found within the Content-Type header. For the sake of simplicity and security, if someone makes a request with any charset parameter besides `utf-8` or `us-ascii`, they'll receive `415 Unsupported Media Type`. This behavior can be suppressed by passing the `anyCharset` option to the plugin.
 
 ```js
 route.use(input({
