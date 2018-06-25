@@ -30,7 +30,7 @@ route.use((req) => {
 
 ## Options
 
-Each parsing function also takes a second argument, which is an object describing the parameters found within the content-type header. For the sake of simplicity and security, if someone makes a request with any charset parameter besides `utf-8` or `us-ascii`, they'll receive `415 Unsupported Media Type`. This behavior can be suppressed by passing the `anyCharset` option to the plugin.
+Each parser function also takes a second argument, which is an object describing the parameters found within the content-type header. For the sake of simplicity and security, if someone makes a request with any charset parameter besides `utf-8` or `us-ascii`, they'll receive `415 Unsupported Media Type`. This behavior can be suppressed by passing the `anyCharset` option to the plugin.
 
 ```js
 route.use(input({
@@ -55,7 +55,7 @@ route.use(input({
 }));
 ```
 
-Sometimes you may wish to defer parsing the body until you really need to. By passing the `deferred` option, no parsing will happen automatically. Instead, `req.body` will be a function that triggers the correct parsing function and returns the result (typically a promise).
+Sometimes you may wish to defer parsing the body until you really need to. By passing the `deferred` option, no parsing will happen automatically. Instead, `req.body` will be a function that triggers the correct parser function and returns the result (typically a promise).
 
 ```js
 route.use(input({
