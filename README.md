@@ -16,7 +16,6 @@ When a valid request is received, the corresponding parser function will be invo
 ```js
 const app = require('vapr')();
 const input = require('vapr-input');
-
 const route = app.get('/foo');
 
 route.use(input({
