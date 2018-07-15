@@ -30,7 +30,7 @@ route.use((req) => {
 
 ## Options
 
-Each parser function also takes a second argument, which is an object describing the parameters found within the Content-Type header. For the sake of simplicity and security, if someone makes a request with any *charset* parameter besides `utf-8` or `us-ascii`, they'll receive `415 Unsupported Media Type`. This behavior can be suppressed by passing the `anyCharset` option to the plugin.
+Each parser function also takes a second argument, which is an object describing the parameters found within the Content-Type header. For the sake of simplicity and security, if someone makes a request with a *charset* parameter besides `utf-8` or `us-ascii`, they'll receive `415 Unsupported Media Type`. This behavior can be suppressed by passing the `anyCharset` option to the plugin.
 
 ```js
 route.use(input({
