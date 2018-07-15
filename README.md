@@ -38,8 +38,7 @@ route.use(input({
   'application/xml': async (raw, params) => {
     if (!params.charset) return 415;
     if (params.charset.toLowerCase() !== 'utf-16le') return 415;
-    const buffers = await raw.all();
-    return parseXML(Buffer.concat(buffers).toString('utf16le'));
+    return parseXML(Buffer.concat(await raw.all()).toString('utf16le'));
   },
 }));
 ```
