@@ -52,7 +52,7 @@ route.use(input({
 }));
 ```
 
-Sometimes you may wish to defer parsing the body until you really need to. By passing the `deferred` option, no parsing will happen automatically. Instead, `req.body` will be a function that triggers the correct parser function and returns the result (typically a promise).
+Sometimes you may wish to defer parsing the body until you really need to. By passing the `deferred` option, no parsing will happen automatically. Instead, `req.body` will be a function that triggers the correct parser and returns a promise for the result.
 
 ```js
 route.use(input({
