@@ -60,7 +60,7 @@ route.use(input({
   'application/json': raw => raw.all().then(Buffer.concat).then(JSON.parse),
 }));
 
-route.use((req) => {
+route.use(async (req) => {
   const body = await req.body();
 });
 ```
