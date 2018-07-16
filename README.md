@@ -52,6 +52,15 @@ route.use(input({
 }));
 ```
 
+To reuse another parser as the default, set the `default` option to a string.
+
+```js
+route.use(input({
+  'text/plain': raw => ...,
+  'default': 'text/plain',
+}));
+```
+
 Sometimes you may wish to defer parsing the body until you really need to. By passing the `deferred` option, no parsing will happen automatically. Instead, `req.body` will be a function that triggers the correct parser and returns a promise for the result.
 
 ```js
