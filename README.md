@@ -36,8 +36,7 @@ Each parser function also takes a second argument, which is an object describing
 route.use(input({
   'anyCharset': true,
   'application/xml': async (raw, params) => {
-    if (!params.charset) return 415;
-    if (params.charset.toLowerCase() !== 'utf-16le') return 415;
+    if (params.charset !== 'utf-16le') return 415;
     return parseXML(Buffer.concat(await raw.all()).toString('utf16le'));
   },
 }));
