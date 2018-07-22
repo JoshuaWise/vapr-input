@@ -1,6 +1,6 @@
 {
   "name": "vapr-input",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "A Vapr plugin for handling requests based on Content-Type",
   "main": "lib/index.js",
   "dependencies": {
