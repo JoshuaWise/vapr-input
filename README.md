@@ -32,7 +32,7 @@ route.use((req) => {
 
 Media parameters are negotiated in a case-insensitive manner because many common parameters (e.g., `charset`) are case-insensitive. If you're using media parameters that are case-sensitive, you can reverse this behavior by setting the `strictParameters` option.
 
-```
+```js
 route.use(input({
   'strictParameters': true,
   'application/foo; some-strange-parameter=hello': serializationFunction,
