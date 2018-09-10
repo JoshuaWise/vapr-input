@@ -39,7 +39,7 @@ route.use(input({
 }));
 ```
 
-For the sake of simplicity and security, if someone makes a request with a `charset` parameter besides `utf-8` or `us-ascii`, they'll receive `415 Unsupported Media Type`. This behavior can be suppressed by using the `anyCharset` option.
+For the sake of simplicity and security, if someone makes a request with a `charset` parameter besides `utf-8` or `us-ascii`, they'll receive `415 Unsupported Media Type`. This behavior can be suppressed with the `anyCharset` option.
 
 ```js
 route.use(input({
