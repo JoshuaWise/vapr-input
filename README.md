@@ -30,17 +30,26 @@ route.use((req) => {
 
 ## Options
 
-Each parser function also takes a second argument, which is an object describing the parameters found within the Content-Type header. For the sake of simplicity and security, if someone makes a request with a *charset* parameter besides `utf-8` or `us-ascii`, they'll receive `415 Unsupported Media Type`. This behavior can be suppressed by passing the `anyCharset` option to the plugin.
+Media parameters are negotiated in a case-insensitive manner because many common parameters (e.g., `charset`) are case-insensitive. If you're using media parameters that are case-sensitive, you can reverse this behavior by setting the `strictParameters` option.
+
+route.use(input({
+  'strictParameters': true,
+  'application/foo; some-strange-parameter=hello': serializationFunction,
+}));
+
+For the sake of simplicity and security, if someone makes a request with a `charset` parameter besides `utf-8` or `us-ascii`, they'll receive `415 Unsupported Media Type`. This behavior can be suppressed by using the `anyCharset` option.
 
 ```js
 route.use(input({
   'anyCharset': true,
   'application/xml': async (raw, params) => {
-    if (params.charset !== 'utf-16le') return 415;
+    if (params.get('charset') !== 'utf-16le') return 415;
     return parseXML(Buffer.concat(await raw.all()).toString('utf16le'));
   },
 }));
 ```
+
+> As shown above, each parser function receives a second argument, which is a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) of the media parameters found within the Content-Type header. All parameter keys will be lowercased and, unless the `strictParameters` option is set, all parameter values will be lowercased as well.
 
 You can optionally pass a `default` function, which is used when no other media type is matched.
 
@@ -60,7 +69,7 @@ route.use(input({
 }));
 ```
 
-Sometimes you may wish to defer parsing the body until you really need to. By passing the `deferred` option, no parsing will happen automatically. Instead, `req.body` will be a function that triggers the correct parser and returns a promise for the result.
+Sometimes you may wish to defer parsing the body until you really need to. By setting the `deferred` option, no parsing will happen automatically. Instead, `req.body` will be a function that triggers the correct parser and returns a promise for the result.
 
 ```js
 route.use(input({

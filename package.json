@@ -4,7 +4,7 @@
   "description": "A Vapr plugin for handling requests based on Content-Type",
   "main": "lib/index.js",
   "dependencies": {
-    "content-type": "^1.0.4"
+    "negotiated": "^1.0.0"
   },
   "peerDependencies": {
     "vapr": "^0.5.0"
