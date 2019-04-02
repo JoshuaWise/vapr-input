@@ -45,7 +45,7 @@ For the sake of simplicity and security, if someone makes a request with a `char
 route.use(input({
   'anyCharset': true,
   'application/xml': async (raw, params) => {
-    if (params.get('charset') !== 'utf-16le') return 415;
+    if (params.get('charset') !== 'utf-16le') throw 415;
     return parseXML(Buffer.concat(await raw.all()).toString('utf16le'));
   },
 }));
